@@ -1,0 +1,232 @@
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/assets/fonts/Figtree.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Parisienne";
+  src: url("/assets/fonts/Parisienne.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm rose/cream scrapbook theme */
+    --background: 0.97 0.01 60;
+    --foreground: 0.22 0.04 20;
+
+    --card: 0.99 0.005 55;
+    --card-foreground: 0.22 0.04 20;
+
+    --popover: 0.99 0.005 55;
+    --popover-foreground: 0.22 0.04 20;
+
+    --primary: 0.6 0.18 5;
+    --primary-foreground: 0.99 0.005 55;
+
+    --secondary: 0.92 0.04 60;
+    --secondary-foreground: 0.35 0.06 20;
+
+    --muted: 0.93 0.025 50;
+    --muted-foreground: 0.5 0.05 30;
+
+    --accent: 0.82 0.12 75;
+    --accent-foreground: 0.22 0.06 25;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.99 0.005 55;
+
+    --border: 0.88 0.04 40;
+    --input: 0.88 0.04 40;
+    --ring: 0.6 0.18 5;
+
+    --radius: 1rem;
+
+    --chart-1: 0.65 0.2 10;
+    --chart-2: 0.7 0.15 60;
+    --chart-3: 0.75 0.12 200;
+    --chart-4: 0.6 0.18 320;
+    --chart-5: 0.8 0.1 90;
+
+    --sidebar: 0.96 0.015 55;
+    --sidebar-foreground: 0.22 0.04 20;
+    --sidebar-primary: 0.6 0.18 5;
+    --sidebar-primary-foreground: 0.99 0.005 55;
+    --sidebar-accent: 0.92 0.04 60;
+    --sidebar-accent-foreground: 0.35 0.06 20;
+    --sidebar-border: 0.88 0.04 40;
+    --sidebar-ring: 0.6 0.18 5;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+    background-image: radial-gradient(
+        ellipse at 20% 10%,
+        oklch(0.92 0.05 5 / 0.3) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse at 80% 30%,
+        oklch(0.88 0.06 65 / 0.25) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse at 50% 80%,
+        oklch(0.9 0.04 320 / 0.2) 0%,
+        transparent 50%
+      );
+    background-attachment: fixed;
+  }
+}
+
+/* Confetti sparkles */
+@keyframes sparkle-1 {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg) scale(1.2);
+    opacity: 0.7;
+  }
+}
+@keyframes sparkle-2 {
+  0%,
+  100% {
+    transform: translateY(0) rotate(45deg) scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-30px) rotate(225deg) scale(1);
+    opacity: 0.5;
+  }
+}
+@keyframes sparkle-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.9;
+  }
+  33% {
+    transform: translate(10px, -15px) rotate(120deg);
+    opacity: 0.6;
+  }
+  66% {
+    transform: translate(-5px, -25px) rotate(240deg);
+    opacity: 0.8;
+  }
+}
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-20px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+@keyframes float-gentle {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px oklch(0.7 0.15 5 / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px oklch(0.7 0.15 5 / 0.5), 0 0 60px
+      oklch(0.8 0.12 60 / 0.2);
+  }
+}
+
+.sparkle-animate-1 {
+  animation: sparkle-1 3s ease-in-out infinite;
+}
+.sparkle-animate-2 {
+  animation: sparkle-2 4s ease-in-out infinite 0.5s;
+}
+.sparkle-animate-3 {
+  animation: sparkle-3 5s ease-in-out infinite 1s;
+}
+.float-gentle {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+.pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    oklch(0.55 0.2 5),
+    oklch(0.75 0.18 60),
+    oklch(0.65 0.2 340),
+    oklch(0.55 0.2 5)
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+.paper-texture {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+.letter-card {
+  background: oklch(0.99 0.01 75);
+  border: 1px solid oklch(0.88 0.05 60);
+  box-shadow: 0 4px 6px oklch(0.7 0.08 40 / 0.08), 0 20px 40px
+    oklch(0.7 0.08 40 / 0.1), inset 0 1px 0 oklch(1 0 0 / 0.8);
+}
+
+.memory-card {
+  background: oklch(0.99 0.005 55);
+  border: 1px solid oklch(0.9 0.03 40);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.memory-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px oklch(0.6 0.1 5 / 0.12);
+}
+
+.stat-card {
+  background: linear-gradient(135deg, oklch(0.97 0.03 5), oklch(0.95 0.04 30));
+  border: 1px solid oklch(0.88 0.06 10);
+}
